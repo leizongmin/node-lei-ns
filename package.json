@@ -1,0 +1,35 @@
+{
+  "name":           "lei-ns",
+  "main":           "./lib/index.js",
+  "version":        "0.1.0",
+  "description":    "namespace",
+  "keywords":       ["hot", "reload"],
+  "author":         "Zongmin Lei <leizongmin@gmail.com> (http://ucdok.com)",
+  "contributors": [
+    {"name": "Zongmin Lei", "email": "leizongmin@gmail.com"}
+  ],
+  "repository": {
+    "type": "git",
+    "url":  "git://github.com/leizongmin/node-lei-ns.git"
+  },
+  "licenses":     [{
+    "type":         "MIT",
+    "url":          "https://raw.github.com/leizongmin/node-lei-ns/master/MIT-License"
+  }],
+  "bugs":{
+    "url":          "https://github.com/leizongmin/node-lei-ns/issues"
+  },
+  "engines": {
+    "node":         ">= 0.6.0"
+  },
+  "dependencies": {
+    "debug":        "~0.7"
+  },
+  "devDependencies":  {
+    "mocha":        "~1.9",
+    "should":       "~1.2"
+  },
+  "scripts": {
+    "test":         "mocha -t 30000"
+  }
+}
