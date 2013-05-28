@@ -4,12 +4,17 @@ lei-ns [![Build Status](https://secure.travis-ci.org/leizongmin/node-lei-ns.png?
 使用方法：
 
 ```javascript
-var NS = require('lei-ns');
+var ns = require('lei-ns');
     
 // 设置
-console.log(NS('test.abc', {a: 123}));
+console.log(ns('test.abc', {a: 123}));
 // 读取, 如果不存在则返回undefined
-console.log(NS('test.abc'));
+console.log(ns('test.abc'));
+
+// 创建非公共的命名空间
+var myns = ns.Namespace();
+console.log(ns('test.abc', {a: 123}));
+console.log(ns('test.abc'));
 ```
 
 说明：
