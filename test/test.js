@@ -31,6 +31,9 @@ describe('namespace', function () {
     ns('c.d.e', 444).should.equal(444);
     ns('c').should.eql({d: {e: 444}});
 
+    ns('').should.eql({a: {b: {e: 111}, c: 456}, c: {d: {e: 444 }}});
+    ns().should.eql({a: {b: {e: 111}, c: 456}, c: {d: {e: 444 }}});
+
     console.log(ns.data);
   });
 
