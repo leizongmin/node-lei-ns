@@ -1,7 +1,7 @@
 {
   "name":           "lei-ns",
   "main":           "./lib/index.js",
-  "version":        "0.1.1",
+  "version":        "0.1.2",
   "description":    "namespace",
   "keywords":       ["hot", "reload"],
   "author":         "Zongmin Lei <leizongmin@gmail.com> (http://ucdok.com)",

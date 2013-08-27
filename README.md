@@ -11,6 +11,11 @@ console.log(ns('test.abc', {a: 123}));
 // 读取, 如果不存在则返回undefined
 console.log(ns('test.abc'));
 
+// 设置一个对象到顶级命名空间
+console.log(ns({a: 123, b: 456}));
+// 读取顶级命名空间
+console.log(ns());
+
 // 创建非公共的命名空间
 var myns = ns.Namespace();
 console.log(ns('test.abc', {a: 123}));
