@@ -1,5 +1,7 @@
 [![NPM version](https://badge.fury.io/js/lei-ns.png)](http://badge.fury.io/js/lei-ns)
-lei-ns [![Build Status](https://secure.travis-ci.org/leizongmin/node-lei-ns.png?branch=master)](http://travis-ci.org/leizongmin/node-lei-ns) [![Dependencies Status](https://david-dm.org/leizongmin/node-lei-ns.png)](http://david-dm.org/leizongmin/node-lei-ns)
+[![Build Status](https://secure.travis-ci.org/leizongmin/node-lei-ns.png?branch=master)](http://travis-ci.org/leizongmin/node-lei-ns) [![Dependencies Status](https://david-dm.org/leizongmin/node-lei-ns.png)](http://david-dm.org/leizongmin/node-lei-ns)
+
+lei-ns
 =======
 
 使用方法：
