@@ -1,3 +1,4 @@
+[![NPM version](https://badge.fury.io/js/lei-ns.png)](http://badge.fury.io/js/lei-ns)
 lei-ns [![Build Status](https://secure.travis-ci.org/leizongmin/node-lei-ns.png?branch=master)](http://travis-ci.org/leizongmin/node-lei-ns) [![Dependencies Status](https://david-dm.org/leizongmin/node-lei-ns.png)](http://david-dm.org/leizongmin/node-lei-ns)
 =======
 
@@ -5,7 +6,7 @@ lei-ns [![Build Status](https://secure.travis-ci.org/leizongmin/node-lei-ns.png?
 
 ```javascript
 var ns = require('lei-ns');
-    
+
 // 设置
 console.log(ns('test.abc', {a: 123}));
 // 读取, 如果不存在则返回undefined
@@ -17,7 +18,9 @@ console.log(ns({a: 123, b: 456}));
 console.log(ns());
 
 // 创建非公共的命名空间
-var myns = ns.Namespace();
+var myns = new ns.Namespace();
+// 可以指定初始化数据
+// var myns = new ns.Namespace({b: 2222});
 console.log(ns('test.abc', {a: 123}));
 console.log(ns('test.abc'));
 ```
@@ -31,7 +34,7 @@ License
 ========
 
 ```
-Copyright (c) 2013 Zongmin Lei(雷宗民) <leizongmin@gmail.com>
+Copyright (c) 2013-2015 Zongmin Lei(雷宗民) <leizongmin@gmail.com>
 http://ucdok.com
 
 The MIT License
