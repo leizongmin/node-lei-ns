@@ -1,35 +1,38 @@
 {
-  "name":           "lei-ns",
-  "main":           "./lib/index.js",
-  "version":        "0.1.2",
-  "description":    "namespace",
-  "keywords":       ["hot", "reload"],
-  "author":         "Zongmin Lei <leizongmin@gmail.com> (http://ucdok.com)",
+  "name": "lei-ns",
+  "main": "./lib/index.js",
+  "version": "0.1.2",
+  "description": "namespace",
+  "keywords": [
+    "hot",
+    "reload"
+  ],
+  "author": "Zongmin Lei <leizongmin@gmail.com> (http://ucdok.com)",
   "contributors": [
-    {"name": "Zongmin Lei", "email": "leizongmin@gmail.com"}
+    {
+      "name": "Zongmin Lei",
+      "email": "leizongmin@gmail.com"
+    }
   ],
   "repository": {
     "type": "git",
-    "url":  "git://github.com/leizongmin/node-lei-ns.git"
+    "url": "git://github.com/leizongmin/node-lei-ns.git"
   },
-  "licenses":     [{
-    "type":         "MIT",
-    "url":          "https://raw.github.com/leizongmin/node-lei-ns/master/MIT-License"
-  }],
-  "bugs":{
-    "url":          "https://github.com/leizongmin/node-lei-ns/issues"
+  "licenses": "MIT",
+  "bugs": {
+    "url": "https://github.com/leizongmin/node-lei-ns/issues"
   },
   "engines": {
-    "node":         ">= 0.6.0"
+    "node": ">= 0.6.0"
   },
   "dependencies": {
-    "debug":        "~0.7"
+    "mocha": "^2.3.2"
   },
-  "devDependencies":  {
-    "mocha":        "~1.9",
-    "should":       "~1.2"
+  "devDependencies": {
+    "mocha": "~1.9",
+    "should": "~1.2"
   },
   "scripts": {
-    "test":         "mocha -t 30000"
+    "test": "mocha -t 30000"
   }
 }

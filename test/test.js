@@ -8,9 +8,8 @@ var should = require('should');
 var ns = require('../');
 
 describe('namespace', function () {
-  
+
   it('一般情况', function () {
-    
     should.equal(ns('a'), undefined);
     should.equal(ns('a.b'), undefined);
     should.equal(ns('a.b.c'), undefined);
@@ -38,6 +37,15 @@ describe('namespace', function () {
     ns().should.eql({a: {b: {e: 111}, c: 456}, b:456, c: {d: {e: 444 }}, d: 789, e: {f: 123}});
 
     console.log(ns.data);
+  });
+
+  it('不同方式创建', function () {
+    var a = ns.Namespace();
+    a('a.a', 123);
+    var b = new ns.Namespace();
+    b('a.a', 456);
+    a('a.a').should.equal(123);
+    b('a.a').should.equal(456);
   });
 
 })
