@@ -46,6 +46,26 @@ describe('namespace', function () {
     b('a.a', 456);
     a('a.a').should.equal(123);
     b('a.a').should.equal(456);
+
+    console.log(a.data);
+    console.log(b.data);
+  });
+
+  it('指定初始化数据', function () {
+    var data = {
+      a: 123456,
+      b: {
+        c: 7890,
+        e: 11111
+      }
+    };
+    var a = new ns.Namespace(data);
+    a().should.eql(data);
+    a('a').should.equal(data.a);
+    a('b').should.equal(data.b);
+    a('b.c').should.equal(data.b.c);
+
+    console.log(a.data);
   });
 
 })
