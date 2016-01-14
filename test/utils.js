@@ -49,21 +49,17 @@ describe('utils', function () {
 
   });
 
-  it('#getProp', function () {
+  it('#getExtendibleLeaf', function () {
 
     var a = {b: 1, c: {d: 123}};
-    assert.deepEqual(utils.getProp(a, 'a', true), {});
-    assert.throws(function () {
-      utils.getProp(a, 'b', true);
-    }, /fail to init/);
-    assert.deepEqual(utils.getProp(a, 'c', true), {d: 123});
+    assert.deepEqual(utils.getExtendibleLeaf(a, 'a', true), {});
+    assert.deepEqual(utils.getExtendibleLeaf(a, 'b', true), undefined);
+    assert.deepEqual(utils.getExtendibleLeaf(a, 'c', true), {d: 123});
 
     var b = {b: 1, c: {d: 123}};
-    assert.deepEqual(utils.getProp(b, 'a', false), undefined);
-    assert.throws(function () {
-      utils.getProp(b, 'b', false);
-    }, /fail to init/);
-    assert.deepEqual(utils.getProp(b, 'c', false), {d: 123});
+    assert.deepEqual(utils.getExtendibleLeaf(b, 'a', false), undefined);
+    assert.deepEqual(utils.getExtendibleLeaf(b, 'b', false), undefined);
+    assert.deepEqual(utils.getExtendibleLeaf(b, 'c', false), {d: 123});
 
   });
 
@@ -90,6 +86,12 @@ describe('utils', function () {
     assert.deepEqual(utils.getChild(b, utils.splitName('a.b')), undefined);
     assert.deepEqual(utils.getChild(b, utils.splitName('a.b.c')), undefined);
     assert.deepEqual(b, {});
+
+    var c = {a: 123};
+    assert.deepEqual(utils.getChild(c, utils.splitName('a')), 123);
+    assert.deepEqual(utils.getChild(c, utils.splitName('a.d')), undefined);
+    assert.deepEqual(utils.getChild(c, utils.splitName('a.d.e')), undefined);
+    assert.deepEqual(c, {a: 123});
 
   });
 
@@ -124,6 +126,18 @@ describe('utils', function () {
     assert.deepEqual(utils.initChild(b, utils.splitName('a.b')), {});
     assert.deepEqual(utils.initChild(b, utils.splitName('a.b.c')), {});
     assert.deepEqual(b, {a: {b: {c: {}}}});
+
+    var c = {a: 123};
+    assert.throws(function () {
+      utils.initChild(c, utils.splitName('a'));
+    }, /fail to init/);
+    assert.throws(function () {
+      utils.initChild(c, utils.splitName('a.d'));
+    }, /fail to init/);
+    assert.throws(function () {
+      utils.initChild(c, utils.splitName('a.d.e'));
+    }, /fail to init/);
+    assert.deepEqual(c, {a: 123});
 
   });
 
