@@ -7,7 +7,7 @@
 var assert = require('assert');
 var utils = require('../lib/utils');
 
-describe('explodeProps', function () {
+describe('getLeafs', function () {
 
   it('#1', function () {
 
@@ -27,7 +27,7 @@ describe('explodeProps', function () {
       j: 0,
       k: [],
     };
-    var ret = utils.explodeProps(data);
+    var ret = utils.getLeafs(data);
     console.log(ret);
 
     assert.deepEqual(ret, [ 'a', 'b', 'c.d', 'c.e.f.g', 'c.e.f.h', 'c.e.i', 'j', 'k' ]);
