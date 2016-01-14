@@ -1,5 +1,5 @@
 /**
- * Namespace Utils
+ * Namespace Tests
  *
  * @author Zongmin Lei <leizongmin@gmail.com>
  */
@@ -85,6 +85,12 @@ describe('utils', function () {
     assert.deepEqual(utils.getChild(a, utils.splitName('e.f.h.x')), undefined);
     assert.deepEqual(a, {b: 1, c: {d: 123}, e: {f: {g: 456, h: {i: {j: 789}}}}});
 
+    var b = {};
+    assert.deepEqual(utils.getChild(b, utils.splitName('a')), undefined);
+    assert.deepEqual(utils.getChild(b, utils.splitName('a.b')), undefined);
+    assert.deepEqual(utils.getChild(b, utils.splitName('a.b.c')), undefined);
+    assert.deepEqual(b, {});
+
   });
 
   it('#initChild', function () {
@@ -111,7 +117,14 @@ describe('utils', function () {
       assert.deepEqual(utils.initChild(a, utils.splitName('e.f.h.i.j')), 789);
     }, /fail to init/);
     assert.deepEqual(utils.initChild(a, utils.splitName('e.f.h.x')), {});
+    assert.deepEqual(a, {'': {}, b: 1, c: {d: 123, x: {}}, e: {f: {g: 456, h: {i: {j: 789}, x: {}}}}, x: {}});
 
-  })
+    var b = {};
+    assert.deepEqual(utils.initChild(b, utils.splitName('a')), {});
+    assert.deepEqual(utils.initChild(b, utils.splitName('a.b')), {});
+    assert.deepEqual(utils.initChild(b, utils.splitName('a.b.c')), {});
+    assert.deepEqual(b, {a: {b: {c: {}}}});
+
+  });
 
 });
