@@ -83,7 +83,35 @@ describe('utils', function () {
     assert.deepEqual(utils.getChild(a, utils.splitName('e.f.h.i')), {j: 789});
     assert.deepEqual(utils.getChild(a, utils.splitName('e.f.h.i.j')), 789);
     assert.deepEqual(utils.getChild(a, utils.splitName('e.f.h.x')), undefined);
+    assert.deepEqual(a, {b: 1, c: {d: 123}, e: {f: {g: 456, h: {i: {j: 789}}}}});
 
   });
+
+  it('#initChild', function () {
+
+    var a = {b: 1, c: {d: 123}, e: {f: {g: 456, h: {i: {j: 789}}}}};
+    assert.deepEqual(utils.initChild(a, utils.splitName('')), {});
+    assert.deepEqual(utils.initChild(a, utils.splitName('x')), {});
+    assert.throws(function () {
+      utils.initChild(a, utils.splitName('b'));
+    }, /fail to init/);
+    assert.deepEqual(utils.initChild(a, utils.splitName('c')), {d: 123});
+    assert.throws(function () {
+      utils.initChild(a, utils.splitName('c.d'));
+    }, /fail to init/);
+    assert.deepEqual(utils.initChild(a, utils.splitName('c.x')), {});
+    assert.deepEqual(utils.initChild(a, utils.splitName('e')), {f: {g: 456, h: {i: {j: 789}}}});
+    assert.deepEqual(utils.initChild(a, utils.splitName('e.f')), {g: 456, h: {i: {j: 789}}});
+    assert.throws(function () {
+      assert.deepEqual(utils.initChild(a, utils.splitName('e.f.g')), 456);
+    }, /fail to init/);
+    assert.deepEqual(utils.initChild(a, utils.splitName('e.f.h')), {i: {j: 789}});
+    assert.deepEqual(utils.initChild(a, utils.splitName('e.f.h.i')), {j: 789});
+    assert.throws(function () {
+      assert.deepEqual(utils.initChild(a, utils.splitName('e.f.h.i.j')), 789);
+    }, /fail to init/);
+    assert.deepEqual(utils.initChild(a, utils.splitName('e.f.h.x')), {});
+
+  })
 
 });
