@@ -224,6 +224,14 @@ describe('namespace', function () {
     assert.deepEqual(ns.merge(setCombineData), setCombineData);
     assert.deepEqual(ns.get('e'), {f: {a: 111, b: 222, c: 333, d: true, e: false, g: null}, h: {i: {j: 'aaa'}, k: 'bbb'}});
 
+    assert.deepEqual(ns.merge({m: {a: 123}}), {m: {a: 123}});
+    assert.deepEqual(ns.merge({m: {b: 456}}), {m: {b: 456}});
+    assert.deepEqual(ns.merge({m: {c: 789}}), {m: {c: 789}});
+    assert.deepEqual(ns.get('m'), {a: 123, b: 456, c: 789});
+
+    assert.deepEqual(ns.merge({m2: 'a'}), {m2: 'a'});
+    assert.deepEqual(ns.get('m2'), 'a');
+
     // delete
     assert.deepEqual(ns.delete('e.f.d'), true);
     assert.deepEqual(ns.delete('e.f.d'), false);
