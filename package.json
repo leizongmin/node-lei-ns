@@ -2,7 +2,7 @@
   "name": "lei-ns",
   "main": "./lib/index.js",
   "version": "0.2.0",
-  "description": "namespace",
+  "description": "Organizing your code without writing wired variable constructs and helper objects",
   "keywords": [
     "hot",
     "reload"
@@ -23,7 +23,7 @@
     "url": "https://github.com/leizongmin/node-lei-ns/issues"
   },
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.10"
   },
   "dependencies": {},
   "devDependencies": {
