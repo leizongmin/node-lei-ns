@@ -1,42 +1,94 @@
-[![NPM version](https://badge.fury.io/js/lei-ns.png)](http://badge.fury.io/js/lei-ns)
-[![Build Status](https://secure.travis-ci.org/leizongmin/node-lei-ns.png?branch=master)](http://travis-ci.org/leizongmin/node-lei-ns) [![Dependencies Status](https://david-dm.org/leizongmin/node-lei-ns.png)](http://david-dm.org/leizongmin/node-lei-ns)
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Gittip][gittip-image]][gittip-url]
+[![David deps][david-image]][david-url]
+[![node version][node-image]][node-url]
+[![npm download][download-image]][download-url]
 
-lei-ns
-=======
+[npm-image]: https://img.shields.io/npm/v/lei-ns.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/lei-ns
+[travis-image]: https://img.shields.io/travis/leizongmin/node-lei-ns.svg?style=flat-square
+[travis-url]: https://travis-ci.org/leizongmin/node-lei-ns
+[coveralls-image]: https://img.shields.io/coveralls/leizongmin/node-lei-ns.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/leizongmin/node-lei-ns?branch=master
+[gittip-image]: https://img.shields.io/gittip/leizongmin.svg?style=flat-square
+[gittip-url]: https://www.gittip.com/leizongmin/
+[david-image]: https://img.shields.io/david/leizongmin/node-lei-ns.svg?style=flat-square
+[david-url]: https://david-dm.org/leizongmin/node-lei-ns
+[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
+[node-url]: http://nodejs.org/download/
+[download-image]: https://img.shields.io/npm/dm/lei-ns.svg?style=flat-square
+[download-url]: https://npmjs.org/package/lei-ns
 
-使用方法：
+# lei-ns
+
+Organizing your code without writing wired variable constructs and helper objects
+
+
+## Installation
+
+```bash
+$ npm install lei-ns --save
+```
+
+
+## Usage
 
 ```javascript
-var ns = require('lei-ns');
+'use strict';
 
-// 设置
-console.log(ns('test.abc', {a: 123}));
-// 读取, 如果不存在则返回undefined
-console.log(ns('test.abc'));
+const createNamespace = require('lei-ns').create;
 
-// 设置一个对象到顶级命名空间
-console.log(ns({a: 123, b: 456}));
-// 读取顶级命名空间
-console.log(ns());
+// you can specify a object when createNamespace()
+const ns = createNamespace({a: {b: 123}});
 
-// 创建非公共的命名空间
-var myns = new ns.Namespace();
-// 可以指定初始化数据
-// var myns = new ns.Namespace({b: 2222});
-console.log(ns('test.abc', {a: 123}));
-console.log(ns('test.abc'));
+// merge an object
+ns.merge({a: {c: 456}, d: 789});
+// get all data
+console.log(ns.all());
+// => { a: { b: 123, c: 456 }, d: 789 }
+
+// get data
+console.log(ns.get('a'));
+// => { b: 123, c: 456 }
+console.log(ns.get('a.c'));
+// => 456
+
+// set data
+ns.set('a.d', 321);
+// ns.get('a') => { b: 123, c: 456, d: 321 }
+ns.set('e.f.g.h.i', true);
+// ns.all() => { a: { b: 123, c: 456, d: 321 }, d: 789, { e: { f: { g: { h:  { i: true } } } } } }
+
+// if has specify namespace (value !== undefine)
+console.log(ns.has('a'));
+// => true
+console.log(ns.has('a.a'));
+// => false
+
+// delete
+ns.delete('a.b');
+// => true
+// ns.get('a') => { c: 456, d: 321 }
+ns.delete('a.b');
+// => false (because a.b does not exists now)
 ```
 
-说明：
+### Reference
 
-* 名称使用小数点 `.` 来进行分隔
++ `get(scope)` - returns value by specify `scope`, if `scope` does not exist returns `undefined`
++ `has(scope)` - returns `true` if the value of passing `scope` isn't `undefined`
++ `set(scope, value)` - define new `value` by specify `score`
++ `delete(scope)` - delete specify `scope`
++ `merge(object)` - merge an `object` to the root scope
++ `all()` - returns the value of root scope
 
 
-License
-========
+## License
 
 ```
-Copyright (c) 2013-2015 Zongmin Lei(雷宗民) <leizongmin@gmail.com>
+Copyright (c) 2013-2016 Zongmin Lei <leizongmin@gmail.com>
 http://ucdok.com
 
 The MIT License
