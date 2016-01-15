@@ -11,7 +11,7 @@ describe('utils', function () {
 
   it('#getLeafs', function () {
 
-    var data = {
+    assert.deepEqual(utils.getLeafs({
       a: 123,
       b: true,
       c: {
@@ -22,15 +22,16 @@ describe('utils', function () {
             h: function () {}
           },
           i: 111
-        }
+        },
+        x: null,
       },
       j: 0,
       k: [],
-    };
-    var ret = utils.getLeafs(data);
-    //console.log(ret);
-
-    assert.deepEqual(ret, [ 'a', 'b', 'c.d', 'c.e.f.g', 'c.e.f.h', 'c.e.i', 'j', 'k' ]);
+      l: {
+        m: 'aaa',
+        n: 'bbb',
+      }
+    }), [ 'a', 'b', 'c.d', 'c.e.f.g', 'c.e.f.h', 'c.e.i', 'c.x', 'j', 'k', 'l.m', 'l.n' ]);
 
   });
 
