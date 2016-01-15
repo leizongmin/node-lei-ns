@@ -27,9 +27,12 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "~1.9"
+    "conventional-changelog": "^0.5.3",
+    "istanbul": "^0.4.2",
+    "mocha": "^2.3.4"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -t 5000"
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- -t 5000",
+    "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   }
 }
