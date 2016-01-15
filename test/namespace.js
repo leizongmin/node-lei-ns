@@ -72,6 +72,15 @@ describe('namespace', function () {
     assert.deepEqual(ns('a.b.c'), undefined);
     assert.deepEqual(ns('a.b.c.e'), undefined);
 
+    // has
+    assert.deepEqual(ns.has('a.b'), false);
+    assert.deepEqual(ns.has('a.b.c'), false);
+    assert.deepEqual(ns.has('a.b.c.e'), false);
+    assert.deepEqual(ns.has('a'), true);
+    assert.deepEqual(ns.has('b'), true);
+    assert.deepEqual(ns.has('b.c'), true);
+    assert.deepEqual(ns.has('e'), true);
+
     // set #fail
     assert.throws(function () {
       ns('a.b', 111);
@@ -223,6 +232,9 @@ describe('namespace', function () {
     assert.deepEqual(ns.delete('e.h.i'), false);
     assert.deepEqual(ns.delete('e.h.j'), false);
     assert.deepEqual(ns.get('e'), {f: {a: 111, b: 222, c: 333, e: false, g: null}, h: {k: 'bbb'}});
+    assert.deepEqual(ns.delete('e'), true);
+    assert.deepEqual(ns.has('e'), false);
+    assert.deepEqual(ns.delete('x'), false);
 
     // set #function
     var setFunctionData = function (a, b) { return a + b; };
