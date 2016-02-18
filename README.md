@@ -40,7 +40,7 @@ $ npm install lei-ns --save
 
 const createNamespace = require('lei-ns').create;
 
-// you can specify a object when createNamespace()
+// you can specified a object when createNamespace()
 const ns = createNamespace({a: {b: 123}});
 
 // merge an object
@@ -61,7 +61,7 @@ ns.set('a.d', 321);
 ns.set('e.f.g.h.i', true);
 // ns.all() => { a: { b: 123, c: 456, d: 321 }, d: 789, { e: { f: { g: { h:  { i: true } } } } } }
 
-// if has specify namespace (value !== undefine)
+// if has specified namespace (value !== undefine)
 console.log(ns.has('a'));
 // => true
 console.log(ns.has('a.a'));
@@ -77,12 +77,17 @@ ns.delete('a.b');
 
 ### Reference
 
-+ `get(scope)` - returns value by specify `scope`, if `scope` does not exist returns `undefined`
++ `get(scope)` - returns value by specified `scope`, if `scope` does not exist returns `undefined`
 + `has(scope)` - returns `true` if the value of passing `scope` isn't `undefined`
-+ `set(scope, value)` - define new `value` by specify `score`
-+ `delete(scope)` - delete specify `scope`
-+ `merge(object)` - merge an `object` to the root scope
-+ `all()` - returns the value of root scope
++ `set(scope, value)` - define new `value` by specified `score`
++ `delete(scope)` - delete specified `scope`
++ `merge(object)` - merge an `object` to the `root scope`
++ `mergeTo(scope, object)` - merge an `object` to the specified `scope`
++ `push(scope, value)` - push an item to the specified `scope`
++ `pop(scope, value)` - pop an item from the specified `scope`
++ `all()` - returns the value of `root scope`
++ `lock(scope)` - lock the specified `scope`, prevents all changes
++ `lockAll()` - lock the `root scope`, prevents all changes
 
 
 ## License
