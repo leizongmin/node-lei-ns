@@ -361,6 +361,21 @@ describe('namespace', function () {
 
   });
 
+  it('merge() & mergeTo()', function () {
+
+    var ns = new Namespace();
+
+    var data = {a: 123, b: 456};
+
+    ns.merge(data);
+    assert.deepEqual(ns.all(), {a: 123, b: 456});
+
+    ns.mergeTo('c.c', data);
+    assert.deepEqual(ns.get('c.c'), {a: 123, b: 456});
+    assert.deepEqual(ns.get('c'), {c: {a: 123, b: 456}});
+
+  });
+
   it('ns & new Namespace() & Namespace() & create() #initData', function () {
 
     var ns1 = namespace;
