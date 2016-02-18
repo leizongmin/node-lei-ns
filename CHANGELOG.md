@@ -1,3 +1,16 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/leizongmin/node-lei-ns/compare/v0.2.0...v0.3.0) (2016-02-18)
+
+
+### Features
+
+* add `lock()` and `locked()` method to prevents all changes ([e8198db](https://github.com/leizongmin/node-lei-ns/commit/e8198db))
+* add `mergeTo()` method to merge object with specified namespace prefix ([2e11046](https://github.com/leizongmin/node-lei-ns/commit/2e11046))
+* add `push()` and `pop()` method to operate an array ([06c02c5](https://github.com/leizongmin/node-lei-ns/commit/06c02c5))
+* all javascripts run on strict mode ([33cbddd](https://github.com/leizongmin/node-lei-ns/commit/33cbddd))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/leizongmin/node-lei-ns/compare/v0.1.3...v0.2.0) (2016-01-15)
 
