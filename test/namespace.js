@@ -280,6 +280,44 @@ describe('namespace', function () {
 
   });
 
+  it('push() & pop()', function () {
+
+    var ns = new Namespace();
+
+    // push: not exists, auto init empty array
+    ns.push('a.a', 123);
+    ns.push('a.a', 456);
+    assert.deepEqual(ns.get('a.a'), [123, 456]);
+
+    // push: exists array
+    ns.set('a.b', [456]);
+    ns.push('a.b', 789);
+    ns.push('a.b', 123);
+    assert.deepEqual(ns.get('a.b'), [456, 789, 123]);
+
+    // push: exists, but not an array
+    assert.throws(function () {
+      ns.set('a.c', {a: 123});
+      ns.push('a.c', 456);
+    }, /fail.*push/);
+
+    // pop: not exists, return undefined
+    assert.equal(ns.pop('b.a'), undefined);
+    assert.equal(ns.pop('b.b'), undefined);
+
+    // pop: exists array
+    ns.set('b.a', [123, 456, 789]);
+    assert.equal(ns.pop('b.a'), 789);
+    assert.equal(ns.pop('b.a'), 456);
+
+    // pop: exists, but not an array
+    assert.throws(function () {
+      ns.set('b.b', {a: 123, b: 567});
+      ns.pop('b.b');
+    }, /fail.*pop/);
+
+  });
+
   it('ns & new Namespace() & Namespace() & create() #initData', function () {
 
     var ns1 = namespace;
