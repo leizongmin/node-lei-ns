@@ -318,6 +318,49 @@ describe('namespace', function () {
 
   });
 
+  it('lock() & lockAll()', function () {
+
+    var ns = new Namespace();
+
+    ns.set('a.a.a', 123);
+    ns.set('a.a.b', 456);
+    ns.set('a.b.c', 789);
+
+    ns.lock('a.a');
+    assert.throws(function () {
+      ns.set('a.a.a', 111);
+    }, /Cannot assign/);
+    assert.throws(function () {
+      ns.set('a.a.b', 111);
+    }, /Cannot assign/);
+    assert.throws(function () {
+      ns.set('a.a.c', 111);
+    }, /not extensible/);
+    assert.throws(function () {
+      ns.set('a.a.c.d', 111);
+    }, /not extensible/);
+
+    ns.set('a.b.c', 999);
+    assert.deepEqual(ns.get('a.b.c'), 999);
+    ns.set('a.c', 999);
+    assert.deepEqual(ns.get('a.c'), 999);
+
+    ns.lock('a.b');
+    assert.throws(function () {
+      ns.set('a.b.c', 111);
+    }, /Cannot assign/);
+
+    ns.lockAll();
+    assert.throws(function () {
+      ns.set('a.c', 111);
+    }, /locked/);
+    assert.throws(function () {
+      ns.set('d.d', 111);
+    }, /locked/);
+    console.log(ns.all());
+
+  });
+
   it('ns & new Namespace() & Namespace() & create() #initData', function () {
 
     var ns1 = namespace;
