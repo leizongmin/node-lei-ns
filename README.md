@@ -77,17 +77,17 @@ ns.delete('a.b');
 
 ### Reference
 
-+ `get(scope)` - returns value by specified `scope`, if `scope` does not exist returns `undefined`
-+ `has(scope)` - returns `true` if the value of passing `scope` isn't `undefined`
-+ `set(scope, value)` - define new `value` by specified `score`
-+ `delete(scope)` - delete specified `scope`
-+ `merge(object)` - merge an `object` to the `root scope`
-+ `mergeTo(scope, object)` - merge an `object` to the specified `scope`
-+ `push(scope, value)` - push an item to the specified `scope`
-+ `pop(scope, value)` - pop an item from the specified `scope`
-+ `all()` - returns the value of `root scope`
-+ `lock(scope)` - lock the specified `scope`, prevents all changes
-+ `lockAll()` - lock the `root scope`, prevents all changes
++ `get(path)` - returns value by specified `path`, if `path` does not exist returns `undefined`
++ `has(path)` - returns `true` if the value of passing `path` isn't `undefined`
++ `set(path, value)` - define new `value` by specified `score`
++ `delete(path)` - delete specified `path`
++ `merge(object)` - merge an `object` to the `root path`
++ `mergeTo(path, object)` - merge an `object` to the specified `path`
++ `push(path, value)` - push an item to the specified `path`
++ `pop(path, value)` - pop an item from the specified `path`
++ `all()` - returns the value of `root path`
++ `lock(path)` - lock the specified `path`, prevents all changes
++ `lockAll()` - lock the `root path`, prevents all changes
 
 
 ## License
