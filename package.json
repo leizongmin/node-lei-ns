@@ -30,7 +30,7 @@
     "conventional-changelog": "^1.1.0",
     "coveralls": "^2.11.6",
     "istanbul": "^0.4.2",
-    "mocha": "^2.3.4"
+    "mocha": "^3.0.1"
   },
   "scripts": {
     "test-cov": "istanbul cover _mocha --report lcovonly -- -t 5000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
