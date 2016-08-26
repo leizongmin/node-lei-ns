@@ -89,7 +89,7 @@ describe('namespace', function () {
     }, /fail to init/);
     assert.throws(function () {
       ns('a.b.c', 111);
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
     assert.throws(function () {
       ns('b.c.d', 111);
     }, /fail to init/);
@@ -191,7 +191,7 @@ describe('namespace', function () {
     }, /fail to init/);
     assert.throws(function () {
       ns.set('a.b.c', 111);
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
     assert.throws(function () {
       ns.set('b.c.d', 111);
     }, /fail to init/);
@@ -331,10 +331,10 @@ describe('namespace', function () {
     ns.lock('a.a');
     assert.throws(function () {
       ns.set('a.a.a', 111);
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
     assert.throws(function () {
       ns.set('a.a.b', 111);
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
     assert.throws(function () {
       ns.set('a.a.c', 111);
     }, /not extensible/);
@@ -350,7 +350,7 @@ describe('namespace', function () {
     ns.lock('a.b');
     assert.throws(function () {
       ns.set('a.b.c', 111);
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
 
     ns.lockAll();
     assert.throws(function () {

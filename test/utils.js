@@ -131,10 +131,10 @@ describe('utils', function () {
     }, /fail to init/);
     assert.throws(function () {
       utils.initChild(c, utils.splitName('a.d'));
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
     assert.throws(function () {
       utils.initChild(c, utils.splitName('a.d.e'));
-    }, /Cannot assign/);
+    }, /Cannot (assign|create)/);
     assert.deepEqual(c, { a: 123 });
 
     const d = { a: 123 };
