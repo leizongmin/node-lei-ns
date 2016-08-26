@@ -1,6 +1,9 @@
 {
   "name": "lei-ns",
   "main": "./lib/index.js",
+  "files": [
+    "lib"
+  ],
   "version": "0.3.2",
   "description": "Organizing your code without writing wired variable constructs and helper objects",
   "keywords": [
