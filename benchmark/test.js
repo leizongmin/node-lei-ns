@@ -22,7 +22,7 @@ function time(title, fn) {
   console.log(`${ title } ${ spaces } spent ${ s - t }ms`);
 }
 
-const TIMES = 2000000;
+const TIMES = 5000000;
 
 console.log('');
 console.log('读取 3层 -------');

@@ -37,11 +37,6 @@ describe('utils', function () {
 
   it('#splitName', function () {
 
-    assert.deepEqual(utils.splitName(), [ '' ]);
-    assert.deepEqual(utils.splitName(undefined), [ '' ]);
-    assert.deepEqual(utils.splitName(null), [ '' ]);
-    assert.deepEqual(utils.splitName(false), [ '' ]);
-
     assert.deepEqual(utils.splitName('a'), [ 'a' ]);
     assert.deepEqual(utils.splitName('a.b'), [ 'a', 'b' ]);
     assert.deepEqual(utils.splitName('a.b.c'), [ 'a', 'b', 'c' ]);
