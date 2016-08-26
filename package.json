@@ -1,7 +1,7 @@
 {
   "name": "lei-ns",
   "main": "./lib/index.js",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Organizing your code without writing wired variable constructs and helper objects",
   "keywords": [
     "hot",
@@ -29,12 +29,19 @@
   "devDependencies": {
     "conventional-changelog": "^0.5.3",
     "coveralls": "^2.11.6",
+    "eslint": "^3.3.1",
+    "eslint-config-lei": "0.0.7",
     "istanbul": "^0.4.2",
     "mocha": "^2.3.4"
+  },
+  "eslintConfig": {
+    "extends": "lei/mocha"
   },
   "scripts": {
     "test-cov": "istanbul cover _mocha -- -t 5000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test": "mocha -t 5000",
-    "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
+    "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
+    "lint": "eslint lib test --fix && echo 'eslint passed'",
+    "prepublish": "npm run lint && npm run test"
   }
 }

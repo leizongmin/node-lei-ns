@@ -4,15 +4,15 @@
  * @author Zongmin Lei <leizongmin@gmail.com>
  */
 
-var assert = require('assert');
-var Namespace = require('../').Namespace;
-var namespace = require('../');
+const assert = require('assert');
+const Namespace = require('../').Namespace;
+const namespace = require('../');
 
 describe('namespace', function () {
 
   it('ns(n, v)', function () {
 
-    var ns = new Namespace();
+    const ns = new Namespace();
 
     // get #not exists
     assert.deepEqual(ns('a'), undefined);
@@ -25,7 +25,7 @@ describe('namespace', function () {
     assert.deepEqual(ns('a', 123), 123);
     assert.deepEqual(ns('b.c', 456), 456);
     assert.deepEqual(ns('e.f.g', 789), 789);
-    assert.deepEqual(ns('h.i.j.k', {l: {m: {n: 111, o: 222}}}), {l: {m: {n: 111, o: 222}}});
+    assert.deepEqual(ns('h.i.j.k', { l: { m: { n: 111, o: 222 }}}), { l: { m: { n: 111, o: 222 }}});
 
     // get all
     assert.deepEqual(ns(), {
@@ -60,12 +60,12 @@ describe('namespace', function () {
 
     // get
     assert.deepEqual(ns('a'), 123);
-    assert.deepEqual(ns('b'), {c: 456});
+    assert.deepEqual(ns('b'), { c: 456 });
     assert.deepEqual(ns('b.c'), 456);
-    assert.deepEqual(ns('e'), {f: {g: 789}});
-    assert.deepEqual(ns('e.f'), {g: 789});
+    assert.deepEqual(ns('e'), { f: { g: 789 }});
+    assert.deepEqual(ns('e.f'), { g: 789 });
     assert.deepEqual(ns('e.f.g'), 789);
-    assert.deepEqual(ns('h.i.j.k'), {l: {m: {n: 111, o: 222}}});
+    assert.deepEqual(ns('h.i.j.k'), { l: { m: { n: 111, o: 222 }}});
 
     // get #not exists
     assert.deepEqual(ns('a.b'), undefined);
@@ -98,13 +98,13 @@ describe('namespace', function () {
     // set #replace
     assert.deepEqual(ns('a', 321), 321);
     assert.deepEqual(ns('b.c', 654), 654);
-    assert.deepEqual(ns('e.f', {a: 111, b: 222, c: 333}), {a: 111, b: 222, c: 333})
+    assert.deepEqual(ns('e.f', { a: 111, b: 222, c: 333 }), { a: 111, b: 222, c: 333 });
     assert.deepEqual(ns('a'), 321);
     assert.deepEqual(ns('b.c'), 654);
-    assert.deepEqual(ns('e.f'), {a: 111, b: 222, c: 333});
+    assert.deepEqual(ns('e.f'), { a: 111, b: 222, c: 333 });
 
     // set #merge
-    var setCombineData = {
+    const setCombineData = {
       e: {
         f: {
           d: true,
@@ -117,17 +117,17 @@ describe('namespace', function () {
           },
           k: 'bbb',
         },
-      }
+      },
     };
     assert.deepEqual(ns(setCombineData), setCombineData);
-    assert.deepEqual(ns('e'), {f: {a: 111, b: 222, c: 333, d: true, e: false, g: null}, h: {i: {j: 'aaa'}, k: 'bbb'}});
+    assert.deepEqual(ns('e'), { f: { a: 111, b: 222, c: 333, d: true, e: false, g: null }, h: { i: { j: 'aaa' }, k: 'bbb' }});
 
   });
 
 
   it('get() & set() & delete() & has()', function () {
 
-    var ns = new Namespace();
+    const ns = new Namespace();
 
     // get #not exists
     assert.deepEqual(ns.get('a'), undefined);
@@ -140,7 +140,7 @@ describe('namespace', function () {
     assert.deepEqual(ns.set('a', 123), 123);
     assert.deepEqual(ns.set('b.c', 456), 456);
     assert.deepEqual(ns.set('e.f.g', 789), 789);
-    assert.deepEqual(ns.set('h.i.j.k', {l: {m: {n: 111, o: 222}}}), {l: {m: {n: 111, o: 222}}});
+    assert.deepEqual(ns.set('h.i.j.k', { l: { m: { n: 111, o: 222 }}}), { l: { m: { n: 111, o: 222 }}});
 
     // get all
     assert.deepEqual(ns.all(), {
@@ -171,12 +171,12 @@ describe('namespace', function () {
 
     // get
     assert.deepEqual(ns.get('a'), 123);
-    assert.deepEqual(ns.get('b'), {c: 456});
+    assert.deepEqual(ns.get('b'), { c: 456 });
     assert.deepEqual(ns.get('b.c'), 456);
-    assert.deepEqual(ns.get('e'), {f: {g: 789}});
-    assert.deepEqual(ns.get('e.f'), {g: 789});
+    assert.deepEqual(ns.get('e'), { f: { g: 789 }});
+    assert.deepEqual(ns.get('e.f'), { g: 789 });
     assert.deepEqual(ns.get('e.f.g'), 789);
-    assert.deepEqual(ns.get('h.i.j.k'), {l: {m: {n: 111, o: 222}}});
+    assert.deepEqual(ns.get('h.i.j.k'), { l: { m: { n: 111, o: 222 }}});
 
     // get #not exists
     assert.deepEqual(ns.get('a.b'), undefined);
@@ -200,13 +200,13 @@ describe('namespace', function () {
     // set #replace
     assert.deepEqual(ns.set('a', 321), 321);
     assert.deepEqual(ns.set('b.c', 654), 654);
-    assert.deepEqual(ns.set('e.f', {a: 111, b: 222, c: 333}), {a: 111, b: 222, c: 333})
+    assert.deepEqual(ns.set('e.f', { a: 111, b: 222, c: 333 }), { a: 111, b: 222, c: 333 });
     assert.deepEqual(ns.get('a'), 321);
     assert.deepEqual(ns.get('b.c'), 654);
-    assert.deepEqual(ns.get('e.f'), {a: 111, b: 222, c: 333});
+    assert.deepEqual(ns.get('e.f'), { a: 111, b: 222, c: 333 });
 
     // set #merge
-    var setCombineData = {
+    const setCombineData = {
       e: {
         f: {
           d: true,
@@ -219,17 +219,17 @@ describe('namespace', function () {
           },
           k: 'bbb',
         },
-      }
+      },
     };
     assert.deepEqual(ns.merge(setCombineData), setCombineData);
-    assert.deepEqual(ns.get('e'), {f: {a: 111, b: 222, c: 333, d: true, e: false, g: null}, h: {i: {j: 'aaa'}, k: 'bbb'}});
+    assert.deepEqual(ns.get('e'), { f: { a: 111, b: 222, c: 333, d: true, e: false, g: null }, h: { i: { j: 'aaa' }, k: 'bbb' }});
 
-    assert.deepEqual(ns.merge({m: {a: 123}}), {m: {a: 123}});
-    assert.deepEqual(ns.merge({m: {b: 456}}), {m: {b: 456}});
-    assert.deepEqual(ns.merge({m: {c: 789}}), {m: {c: 789}});
-    assert.deepEqual(ns.get('m'), {a: 123, b: 456, c: 789});
+    assert.deepEqual(ns.merge({ m: { a: 123 }}), { m: { a: 123 }});
+    assert.deepEqual(ns.merge({ m: { b: 456 }}), { m: { b: 456 }});
+    assert.deepEqual(ns.merge({ m: { c: 789 }}), { m: { c: 789 }});
+    assert.deepEqual(ns.get('m'), { a: 123, b: 456, c: 789 });
 
-    assert.deepEqual(ns.merge({m2: 'a'}), {m2: 'a'});
+    assert.deepEqual(ns.merge({ m2: 'a' }), { m2: 'a' });
     assert.deepEqual(ns.get('m2'), 'a');
 
     // delete
@@ -239,29 +239,29 @@ describe('namespace', function () {
     assert.deepEqual(ns.delete('e.h.i'), true);
     assert.deepEqual(ns.delete('e.h.i'), false);
     assert.deepEqual(ns.delete('e.h.j'), false);
-    assert.deepEqual(ns.get('e'), {f: {a: 111, b: 222, c: 333, e: false, g: null}, h: {k: 'bbb'}});
+    assert.deepEqual(ns.get('e'), { f: { a: 111, b: 222, c: 333, e: false, g: null }, h: { k: 'bbb' }});
     assert.deepEqual(ns.delete('e'), true);
     assert.deepEqual(ns.has('e'), false);
     assert.deepEqual(ns.delete('x'), false);
 
     // set #function
-    var setFunctionData = function (a, b) { return a + b; };
+    const setFunctionData = function (a, b) { return a + b; };
     assert.equal(ns.set('x.function', setFunctionData), setFunctionData);
     assert.equal(ns.get('x.function'), setFunctionData);
 
     // set #array
-    var setArrayData = ['a', 'b', 'c', 1, 2, 3];
+    const setArrayData = [ 'a', 'b', 'c', 1, 2, 3 ];
     assert.equal(ns.set('x.array', setArrayData), setArrayData);
     assert.equal(ns.get('x.array'), setArrayData);
 
     // set #object
-    var setObjectData = {a: 'a', b: 123, c: false};
+    const setObjectData = { a: 'a', b: 123, c: false };
     assert.equal(ns.set('x.object', setObjectData), setObjectData);
     assert.equal(ns.get('x.object'), setObjectData);
 
     // set #circular
-    var setCircularData1 = {a: 123, b: 456};
-    var setCircularData2 = {a: true, b: false, c: setCircularData1};
+    const setCircularData1 = { a: 123, b: 456 };
+    const setCircularData2 = { a: true, b: false, c: setCircularData1 };
     setCircularData1.c = setCircularData2;
     assert.deepEqual(ns.set('x.circular', setCircularData1), setCircularData1);
 
@@ -269,7 +269,7 @@ describe('namespace', function () {
       function: setFunctionData,
       array: setArrayData,
       object: setObjectData,
-      circular: setCircularData1
+      circular: setCircularData1,
     });
 
     // merge #circular
@@ -282,22 +282,22 @@ describe('namespace', function () {
 
   it('push() & pop()', function () {
 
-    var ns = new Namespace();
+    const ns = new Namespace();
 
     // push: not exists, auto init empty array
     ns.push('a.a', 123);
     ns.push('a.a', 456);
-    assert.deepEqual(ns.get('a.a'), [123, 456]);
+    assert.deepEqual(ns.get('a.a'), [ 123, 456 ]);
 
     // push: exists array
-    ns.set('a.b', [456]);
+    ns.set('a.b', [ 456 ]);
     ns.push('a.b', 789);
     ns.push('a.b', 123);
-    assert.deepEqual(ns.get('a.b'), [456, 789, 123]);
+    assert.deepEqual(ns.get('a.b'), [ 456, 789, 123 ]);
 
     // push: exists, but not an array
     assert.throws(function () {
-      ns.set('a.c', {a: 123});
+      ns.set('a.c', { a: 123 });
       ns.push('a.c', 456);
     }, /fail.*push/);
 
@@ -306,13 +306,13 @@ describe('namespace', function () {
     assert.equal(ns.pop('b.b'), undefined);
 
     // pop: exists array
-    ns.set('b.a', [123, 456, 789]);
+    ns.set('b.a', [ 123, 456, 789 ]);
     assert.equal(ns.pop('b.a'), 789);
     assert.equal(ns.pop('b.a'), 456);
 
     // pop: exists, but not an array
     assert.throws(function () {
-      ns.set('b.b', {a: 123, b: 567});
+      ns.set('b.b', { a: 123, b: 567 });
       ns.pop('b.b');
     }, /fail.*pop/);
 
@@ -320,7 +320,7 @@ describe('namespace', function () {
 
   it('lock() & lockAll()', function () {
 
-    var ns = new Namespace();
+    const ns = new Namespace();
 
     ns.set('a.a.a', 123);
     ns.set('a.a.b', 456);
@@ -363,26 +363,27 @@ describe('namespace', function () {
 
   it('merge() & mergeTo()', function () {
 
-    var ns = new Namespace();
+    const ns = new Namespace();
 
-    var data = {a: 123, b: 456};
+    const data = { a: 123, b: 456 };
 
     ns.merge(data);
-    assert.deepEqual(ns.all(), {a: 123, b: 456});
+    assert.deepEqual(ns.all(), { a: 123, b: 456 });
 
     ns.mergeTo('c.c', data);
-    assert.deepEqual(ns.get('c.c'), {a: 123, b: 456});
-    assert.deepEqual(ns.get('c'), {c: {a: 123, b: 456}});
+    assert.deepEqual(ns.get('c.c'), { a: 123, b: 456 });
+    assert.deepEqual(ns.get('c'), { c: { a: 123, b: 456 }});
 
   });
 
   it('ns & new Namespace() & Namespace() & create() #initData', function () {
 
-    var ns1 = namespace;
+    const ns1 = namespace;
     ns1.set('random', Math.random());
-    var ns2 = new namespace.Namespace({random: Math.random()});
-    var ns3 = namespace.Namespace({random: Math.random()});
-    var ns4 = namespace.create({random: Math.random()});
+    const ns2 = new namespace.Namespace({ random: Math.random() });
+    // eslint-disable-next-line
+    const ns3 = namespace.Namespace({ random: Math.random() });
+    const ns4 = namespace.create({ random: Math.random() });
 
     assert.notEqual(ns1.get('random'), ns2.get('random'));
     assert.notEqual(ns1.get('random'), ns3.get('random'));
