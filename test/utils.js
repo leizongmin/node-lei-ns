@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Namespace Tests
  *
@@ -129,10 +131,10 @@ describe('utils', function () {
     }, /fail to init/);
     assert.throws(function () {
       utils.initChild(c, utils.splitName('a.d'));
-    }, /fail to init/);
+    }, /Cannot assign/);
     assert.throws(function () {
       utils.initChild(c, utils.splitName('a.d.e'));
-    }, /fail to init/);
+    }, /Cannot assign/);
     assert.deepEqual(c, { a: 123 });
 
     const d = { a: 123 };

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Namespace Tests
  *
@@ -87,7 +89,7 @@ describe('namespace', function () {
     }, /fail to init/);
     assert.throws(function () {
       ns('a.b.c', 111);
-    }, /fail to init/);
+    }, /Cannot assign/);
     assert.throws(function () {
       ns('b.c.d', 111);
     }, /fail to init/);
@@ -189,7 +191,7 @@ describe('namespace', function () {
     }, /fail to init/);
     assert.throws(function () {
       ns.set('a.b.c', 111);
-    }, /fail to init/);
+    }, /Cannot assign/);
     assert.throws(function () {
       ns.set('b.c.d', 111);
     }, /fail to init/);
