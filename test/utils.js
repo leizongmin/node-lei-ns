@@ -140,6 +140,12 @@ describe('utils', function () {
     }, /fail to init/);
     assert.deepEqual(c, {a: 123});
 
+    var d = {a: 123};
+    Object.freeze(d);
+    assert.throws(function () {
+      utils.initChild(d, utils.splitName('a.b'));
+    }, /not extensible/);
+
   });
 
 });

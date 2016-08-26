@@ -33,7 +33,7 @@
     "mocha": "^2.3.4"
   },
   "scripts": {
-    "test-cov": "istanbul cover _mocha --report lcovonly -- -t 5000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test-cov": "istanbul cover _mocha -- -t 5000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test": "mocha -t 5000",
     "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -w -r 0"
   }
