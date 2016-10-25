@@ -7,10 +7,10 @@
     "lib"
   ],
   "scripts": {
-    "coverage": "istanbul cover _mocha -- -t 5000 -R spec && cat ./coverage/lcov.info | coveralls",
     "test": "mocha -t 5000",
+    "test-cov": "istanbul cover _mocha -- -t 5000 -R spec && cat ./coverage/lcov.info | coveralls",
     "lint": "eslint lib test --fix && echo 'eslint passed'",
-    "prepublish": "npm run lint && npm run coverage"
+    "prepublish": "npm run lint"
   },
   "repository": {
     "type": "git",
