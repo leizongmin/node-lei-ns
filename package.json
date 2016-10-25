@@ -1,50 +1,38 @@
 {
   "name": "lei-ns",
-  "main": "./lib/index.js",
+  "version": "0.4.1",
+  "description": "Organizing your code without writing wired variable constructs and helper objects",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
-  "version": "0.4.0",
-  "description": "Organizing your code without writing wired variable constructs and helper objects",
-  "keywords": [
-    "hot",
-    "reload"
-  ],
-  "author": "Zongmin Lei <leizongmin@gmail.com> (http://ucdok.com)",
-  "contributors": [
-    {
-      "name": "Zongmin Lei",
-      "email": "leizongmin@gmail.com"
-    }
-  ],
+  "scripts": {
+    "coverage": "istanbul cover _mocha -- -t 5000 -R spec && cat ./coverage/lcov.info | coveralls",
+    "test": "mocha -t 5000",
+    "lint": "eslint lib test --fix && echo 'eslint passed'",
+    "prepublish": "npm run lint && npm run coverage"
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/leizongmin/node-lei-ns.git"
+    "url": "git+https://github.com/leizongmin/node-lei-ns.git"
   },
-  "licenses": "MIT",
+  "keywords": [
+    "ns",
+    "namespace",
+    "object"
+  ],
+  "author": "Zongmin Lei <leizongmin@gmail.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/leizongmin/node-lei-ns/issues"
   },
-  "engines": {
-    "node": ">= 0.10"
-  },
-  "dependencies": {},
+  "homepage": "https://github.com/leizongmin/node-lei-ns#readme",
   "devDependencies": {
-    "conventional-changelog": "^1.1.0",
     "coveralls": "^2.11.6",
     "eslint": "^3.3.1",
     "eslint-config-lei": "0.0.14",
+    "eslint-plugin-promise": "^3.3.0",
     "istanbul": "^0.4.2",
     "mocha": "^3.1.2"
-  },
-  "eslintConfig": {
-    "extends": "lei/mocha"
-  },
-  "scripts": {
-    "test-cov": "istanbul cover _mocha -- -t 5000 -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "test": "mocha -t 5000",
-    "changelog": "./node_modules/.bin/conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
-    "lint": "eslint lib test --fix && echo 'eslint passed'",
-    "prepublish": "npm run lint && npm run test"
   }
 }
