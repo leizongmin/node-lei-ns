@@ -22,6 +22,8 @@
 
 # lei-ns
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/leizongmin/node-lei-ns.svg)](https://greenkeeper.io/)
+
 Organizing your code without writing wired variable constructs and helper objects
 
 
